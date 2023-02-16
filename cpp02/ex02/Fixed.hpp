@@ -23,19 +23,27 @@ class Fixed
 
 		Fixed &operator = (const Fixed &A);
 		
-		bool	operator < (const Fixed &A);
-		bool	operator > (const Fixed &A);
-		bool	operator >= (const Fixed &A);
-		bool	operator <= (const Fixed &A);
-		bool	operator == (const Fixed &A);
-		bool	operator != (const Fixed &A);
+		bool	operator < (const Fixed &A) const;
+		bool	operator > (const Fixed &A) const;
+		bool	operator >= (const Fixed &A) const;
+		bool	operator <= (const Fixed &A) const;
+		bool	operator == (const Fixed &A) const;
+		bool	operator != (const Fixed &A) const;
+		Fixed	operator ++ (int);
+		Fixed	&operator ++ (void);
+		Fixed	operator -- (int);
+		Fixed	&operator -- (void);
 
 		Fixed	operator + (const Fixed &A);
 		Fixed	operator - (const Fixed &A);
 		Fixed	operator / (const Fixed &A);
 		Fixed	operator * (const Fixed &A);
 
+		static Fixed &min(Fixed &A, Fixed &B);
+		static const Fixed &min(const Fixed &A, const Fixed &B);
+		static Fixed &max(Fixed &A, Fixed &B);
+		static const Fixed &max(const Fixed &A, const Fixed &B);
 };
 
-std::ostream & operator << (std::ostream & stream, const Fixed & instance);
+std::ostream &operator << (std::ostream &stream, const Fixed &instance);
 #endif /* *********************************************************** FIXED_H */
