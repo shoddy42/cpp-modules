@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/20 20:11:23 by wkonings      ########   odam.nl          #
+#    Updated: 2023/02/21 01:25:43 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 # --------------- VARIABLES --------------- #
 # ----------------------------------------- #
 
-NAME 	:= claptrap_two_electric_boogaloo
-FLAGS 	:= -Wall -Wextra -Werror -std=c++98
+NAME 	:= polymorphism
+FLAGS 	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++
@@ -24,23 +24,24 @@ CC		:= c++
 # --------------- DIRECTORIES ------------ #
 # ---------------------------------------- #
 
-SRC_DIR		:= .
+INC_DIR		:= include
+SRC_DIR		:= src
 OBJ_DIR		:= obj
 
 # ----------------------------------------- #
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-HEADER_FILES := ClapTrap ScavTrap
+HEADER_FILES := Animal Cat Dog WrongCat WrongDog
 
-MAIN_FILES	:= main ClapTrap ScavTrap
+MAIN_FILES	:= main Animal Cat Dog WrongCat WrongDog
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 
-# SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
-SRCS	:=	$(FILES)
+SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
+# SRCS	:=	$(FILES)
 OBJS	:=	$(addprefix $(OBJ_DIR)/, $(FILES:%.cpp=%.o))
-HEADERS	:=	$(HEADER_FILES:%=%.hpp)
+HEADERS	:=	$(addprefix $(INC_DIR)/, $(HEADER_FILES:%=%.hpp))
 
 # ----------------------------------------- #
 # --------- COLOURS / FORMATTING ---------- #

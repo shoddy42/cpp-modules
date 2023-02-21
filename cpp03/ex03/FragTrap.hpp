@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ClapTrap.hpp                                       :+:    :+:            */
+/*   FragTrap.hpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/20 19:26:55 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/20 19:26:56 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/20 21:15:56 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/20 22:00:21 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 # include <iostream>
 # include <string>
+# include "ClapTrap.hpp"
 
-class ClapTrap
+class FragTrap: virtual public ClapTrap
 {
-	protected:
-		std::string _name;
-		int			_hp;
-		int			_energy;
-		int			_damage;
-
 	public:
-		ClapTrap(void);
-		ClapTrap(const std::string name);
-		ClapTrap(const ClapTrap &src);
-		~ClapTrap(void);
+		FragTrap(void);
+		FragTrap(const std::string name);
+		FragTrap(const FragTrap &src);
+		~FragTrap(void);
 
-		ClapTrap &operator=(const ClapTrap &src);
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		FragTrap &operator=(FragTrap const &src);
+		void highFivesGuys(void);
 };
 
-#endif
+#endif /* ******************************************************** FRAGTRAP_H */

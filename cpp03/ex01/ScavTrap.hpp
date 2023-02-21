@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ScavTrap.hpp                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/20 19:26:53 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/20 19:26:54 by wkonings      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
@@ -8,7 +20,6 @@
 class ScavTrap: public ClapTrap
 {
 	public:
-
 		ScavTrap(void);
 		ScavTrap(const std::string name);
 		ScavTrap(const ScavTrap &src);
@@ -17,11 +28,6 @@ class ScavTrap: public ClapTrap
 		ScavTrap &operator=(const ScavTrap &src);
 		void attack(const std::string &target);
 		void guardGate(void);
-
-	private:
-
 };
-
-// std::ostream &			operator<<( std::ostream & o, ScavTrap const & i );
 
 #endif /* ******************************************************** ScavTRAP_H */

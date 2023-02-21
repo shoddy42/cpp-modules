@@ -6,15 +6,26 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/16 20:11:01 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/20 20:03:53 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/20 21:45:51 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
+	std::cout << "----------------------------------------------" << std::endl;
+	{
+		FragTrap frag("Fraggy");
+		
+		frag.highFivesGuys();
+		frag.attack("Shaggy");
+		frag.takeDamage(50);
+		frag.beRepaired(49);
+	}
+	std::cout << "----------------------------------------------" << std::endl;
 	{
 		ScavTrap salvador("Salvador");
 		salvador.beRepaired(5);
@@ -78,6 +89,18 @@ int	main(void)
 		standard = copy;
 		standard.beRepaired(0);
 	}
+	//copying fragtrap
+	std::cout << "----------------------------------------------" << std::endl;
+	{
+		FragTrap real("frag-joe");
+		real.takeDamage(8);
+		FragTrap copy(real);
+		copy.beRepaired(0);
+		FragTrap standard;
+		standard.beRepaired(0);
+		standard = copy;
+		standard.beRepaired(0);
+	}
 	//out of health claptrap
 	std::cout << "----------------------------------------------" << std::endl;
 	{
@@ -96,6 +119,16 @@ int	main(void)
 		dead.attack("Noone");
 		dead.beRepaired(1000);
 		dead.guardGate();
+	}
+	//out of health fragtrap
+	std::cout << "----------------------------------------------" << std::endl;
+	{
+		FragTrap dead("frag-dead");
+
+		dead.takeDamage(999);
+		dead.attack("Noone");
+		dead.beRepaired(1000);
+		dead.highFivesGuys();
 	}
 	return (0);
 }

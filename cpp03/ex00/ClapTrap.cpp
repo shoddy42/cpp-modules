@@ -4,22 +4,14 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap(): _hp(10), _damage(0), _energy(10), _name("Default")
 {
 	std::cout << "Default constructor called" << std::endl;
-	this->_name = "Default";
-	this->_energy = 10;
-	this->_damage = 0;
-	this->_hp = 10;
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name): _hp(10), _damage(0), _energy(10), _name(name)
 {
 	std::cout << "String creator constructor called" << std::endl;
-	this->_name = name;
-	this->_energy = 10;
-	this->_damage = 0;
-	this->_hp = 10;
 }
 
 
@@ -46,19 +38,14 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &src)
 {
+	if (this == &src)
+		return (*this);
 	this->_damage = src._damage;
 	this->_energy = src._energy;
 	this->_name = src._name;
 	this->_hp = src._hp;
 	return (*this);
 }
-
-// std::ostream &			operator<<( std::ostream & o, ClapTrap const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------

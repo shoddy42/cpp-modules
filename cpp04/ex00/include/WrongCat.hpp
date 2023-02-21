@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ClapTrap.hpp                                       :+:    :+:            */
+/*   WrongCat.hpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/20 19:26:55 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/20 19:26:56 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 01:20:21 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 01:33:48 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
 # include <iostream>
 # include <string>
+# include "Animal.hpp"
 
-class ClapTrap
+class WrongCat: public Animal
 {
 	protected:
-		std::string _name;
-		int			_hp;
-		int			_energy;
-		int			_damage;
+		std::string type;
 
 	public:
-		ClapTrap(void);
-		ClapTrap(const std::string name);
-		ClapTrap(const ClapTrap &src);
-		~ClapTrap(void);
-
-		ClapTrap &operator=(const ClapTrap &src);
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		WrongCat(void);
+		WrongCat(const WrongCat &src);
+		~WrongCat(void);
+		WrongCat &operator=(const WrongCat &src);
+		virtual void makeSound(void);
 };
 
-#endif
+#endif /* ********************************************************** WRONGCAT_H */

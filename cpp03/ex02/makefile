@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/20 20:11:23 by wkonings      ########   odam.nl          #
+#    Updated: 2023/02/20 20:17:55 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # --------------- VARIABLES --------------- #
 # ----------------------------------------- #
 
-NAME 	:= claptrap_two_electric_boogaloo
+NAME 	:= claptrap_three
 FLAGS 	:= -Wall -Wextra -Werror -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
@@ -31,9 +31,9 @@ OBJ_DIR		:= obj
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-HEADER_FILES := ClapTrap ScavTrap
+HEADER_FILES := ClapTrap ScavTrap FragTrap
 
-MAIN_FILES	:= main ClapTrap ScavTrap
+MAIN_FILES	:= main ClapTrap ScavTrap FragTrap
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 

@@ -1,19 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ClapTrap.cpp                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/20 19:26:49 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/20 23:01:35 by wkonings      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ClapTrap::ClapTrap(): _hp(10), _damage(0), _energy(0)
+ClapTrap::ClapTrap(): _name("CL4P-TP"), _hp(10), _energy(10), _damage(0)
 {
 	std::cout << "ClapTrap Default constructor called" << std::endl;
-	this->_name = "CL4P-TP";
 }
 
-ClapTrap::ClapTrap(std::string name): _hp(10), _damage(0), _energy(0)
+ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _energy(10), _damage(0)
 {
 	std::cout << "ClapTrap Name constructor called" << std::endl;
-	this->_name = name;
 }
 
 
@@ -22,7 +32,6 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	*this = src;
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -33,26 +42,20 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
-
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &src)
 {
+	if (this == &src)
+		return (*this);
 	this->_damage = src._damage;
 	this->_energy = src._energy;
 	this->_name = src._name;
 	this->_hp = src._hp;
 	return (*this);
 }
-
-// std::ostream &			operator<<( std::ostream & o, ClapTrap const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -80,7 +83,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 	this->_hp += amount;
 	std::cout << this->_name << " has healed " << amount <<  " hp and now has " << this->_hp << " hp remaining!" << std::endl;
 }
-
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
