@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 20:34:13 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 00:25:00 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/22 19:46:13 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,16 @@ Animal::~Animal(void)
 
 Animal &Animal::operator=(const Animal &src)
 {
+	Brain *test;
+	Brain *test2;
 	std::cout << "ANIMAL: Assignment operator called" << std::endl;
 	if (this != &src)
 	{
 		type = src.type;
+		test = src.getBrain();
+		std::cout << test->ideas[2] << std::endl;
+		test2 = this->getBrain();
+		*test2 = *test; 
 	}
 	return (*this);
 }

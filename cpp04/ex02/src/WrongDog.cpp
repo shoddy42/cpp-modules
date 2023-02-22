@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Brain.cpp                                          :+:    :+:            */
+/*   WrongDog.cpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 21:28:35 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:10:07 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:34:03 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 20:34:04 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Brain.hpp"
+#include "../include/WrongDog.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Brain::Brain()
+WrongDog::WrongDog(void)
 {
-	std::cout << "BRAIN: Default constructor called" << std::endl;
+	std::cout << "WRONGDOG: Default constructor called" << std::endl;
+	type = "WrongDog";
 }
 
-Brain::Brain(const Brain &src)
+WrongDog::WrongDog(const WrongDog &src)
 {
-	std::cout << "BRAIN: Copy constructor called" << std::endl;
+	std::cout << "WRONGDOG: Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -31,22 +32,20 @@ Brain::Brain(const Brain &src)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Brain::~Brain()
+WrongDog::~WrongDog(void)
 {
-	std::cout << "BRAIN: Destructor called" << std::endl;
+	std::cout << "WRONGDOG: destructor called" << std::endl;
 }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Brain &Brain::operator=(const Brain &src)
+WrongDog &WrongDog::operator=(const WrongDog &src)
 {
-	std::cout << "BRAIN COPYING" << std::endl;
 	if (this != &src)
 	{
-		for (int i = 0; i < 100; i++)
-			ideas[i] = src.ideas[i];
+		type = src.type;
 	}
 	return (*this);
 }
@@ -55,10 +54,9 @@ Brain &Brain::operator=(const Brain &src)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
+void WrongDog::makeSound(void) const
+{
+	std::cout << "Woooooof but wrong" << std::endl;
+}
 
 /* ************************************************************************** */

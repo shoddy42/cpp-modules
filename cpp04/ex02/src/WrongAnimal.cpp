@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Brain.cpp                                          :+:    :+:            */
+/*   WrongAnimal.cpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 21:28:35 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:10:07 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:34:13 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 20:34:13 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Brain.hpp"
+#include "../include/WrongAnimal.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Brain::Brain()
+WrongAnimal::WrongAnimal(void)
 {
-	std::cout << "BRAIN: Default constructor called" << std::endl;
+	std::cout << "WRONGANIMAL: Default constructor called" << std::endl;
 }
 
-Brain::Brain(const Brain &src)
+WrongAnimal::WrongAnimal(const WrongAnimal &src)
 {
-	std::cout << "BRAIN: Copy constructor called" << std::endl;
+	std::cout << "WRONGANIMAL: Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -31,22 +31,21 @@ Brain::Brain(const Brain &src)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Brain::~Brain()
+WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "BRAIN: Destructor called" << std::endl;
+	std::cout << "WRONGANIMAL: Destructor called" << std::endl;
 }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Brain &Brain::operator=(const Brain &src)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &src)
 {
-	std::cout << "BRAIN COPYING" << std::endl;
+	std::cout << "WRONGANIMAL: Assignment operator called" << std::endl;
 	if (this != &src)
 	{
-		for (int i = 0; i < 100; i++)
-			ideas[i] = src.ideas[i];
+		type = src.type;
 	}
 	return (*this);
 }
@@ -55,10 +54,18 @@ Brain &Brain::operator=(const Brain &src)
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void WrongAnimal::makeSound(void) const
+{
+	std::cout << "*indistinguishable noises*" << std::endl;
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+const std::string &WrongAnimal::getType(void) const
+{
+	return (type);
+}
 
 /* ************************************************************************** */

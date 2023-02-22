@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   Animal.hpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:06 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:26:40 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:39:42 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/22 22:27:50 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 # include <iostream>
-# include "Animal.hpp"
+# include <string>
 # include "Brain.hpp"
 
-class Cat: public Animal
+class Animal
 {
-	public:
-		Cat(void);
-		Cat(const Cat &src);
-		~Cat(void);
-		virtual Cat &operator=(const Cat &src);
-		virtual Brain *getBrain(void) const;
-		virtual void makeSound(void) const;
+	protected:
+		std::string type;
 
-	private:
-		Brain* brain;
+	public:
+		Animal(void);
+		Animal(const Animal &src);
+		virtual ~Animal(void);
+		virtual Animal &operator=(const Animal &src);
+		virtual Brain *getBrain(void) const = 0;
+		const std::string &getType(void) const;
+		virtual void makeSound(void) const = 0;
 };
 
-#endif /* ********************************************************** CAT_H */
+#endif /* ********************************************************** ANIMAL_H */

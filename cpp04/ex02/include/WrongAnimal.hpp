@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   WrongAnimal.hpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:06 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:26:40 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:39:42 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 20:45:08 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 # include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
+# include <string>
 
-class Cat: public Animal
+class WrongAnimal
 {
-	public:
-		Cat(void);
-		Cat(const Cat &src);
-		~Cat(void);
-		virtual Cat &operator=(const Cat &src);
-		virtual Brain *getBrain(void) const;
-		virtual void makeSound(void) const;
+	protected:
+		std::string type;
 
-	private:
-		Brain* brain;
+	public:
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal &src);
+		virtual ~WrongAnimal(void);
+		WrongAnimal &operator=(const WrongAnimal &src);
+
+		const std::string &getType(void) const;
+		void makeSound(void) const;
 };
 
-#endif /* ********************************************************** CAT_H */
+#endif /* ********************************************************** ANIMAL_H */

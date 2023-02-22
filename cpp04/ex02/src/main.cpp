@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/20 23:10:31 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:56:32 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/22 23:05:24 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void leak_check(void)
 {
-	system("leaks world_on_fire");
+	system("leaks abstract");
 }
 
 int main(void)
@@ -42,7 +42,7 @@ int main(void)
 	std::cout << "set brain: " << animals[0]->getBrain()->ideas[2] << std::endl;
 	std::cout << "pre copied brain: " << animals[6]->getBrain()->ideas[2] << std::endl;
 
-	// *animals[6] = *animals[0];
+	*animals[6] = *animals[0];
 	// *(animals[6]) = *(animals[0]);
 
 	// animals[6]->makeSound();
@@ -54,11 +54,11 @@ int main(void)
 	// std::cout << "copied brain: " << animals[5]->getBrain()->ideas[2] << std::endl;
 	// brain = NULL;
 	// other_brain = NULL;
-	// for (int i = 0; i < 10; i++)
-	// {
-	// 	if (animals[i] && animals[i]->getBrain() != NULL)
-	// 		delete animals[i];
-	// }
+	for (int i = 0; i < 8; i++)
+	{
+		if (animals[i] && animals[i]->getBrain() != NULL)
+			delete animals[i];
+	}
 		
 	// while (true)
 	// 	;

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.hpp                                            :+:    :+:            */
+/*   Brain.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:06 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:26:40 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 21:28:37 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 22:05:05 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include <iostream>
-# include "Animal.hpp"
-# include "Brain.hpp"
+# include <string>
 
-class Cat: public Animal
+class Brain
 {
+
 	public:
-		Cat(void);
-		Cat(const Cat &src);
-		~Cat(void);
-		virtual Cat &operator=(const Cat &src);
-		virtual Brain *getBrain(void) const;
-		virtual void makeSound(void) const;
+		Brain(void);
+		Brain(const Brain &src);
+		~Brain(void);
+
+		Brain &operator=(const Brain &src);
+		std::string ideas[100];
 
 	private:
-		Brain* brain;
+
 };
 
-#endif /* ********************************************************** CAT_H */
+#endif /* *********************************************************** BRAIN_H */
