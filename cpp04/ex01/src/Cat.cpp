@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 20:34:03 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/21 20:36:17 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/21 22:58:50 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Cat::Cat(void)
 {
 	std::cout << "CAT: Default constructor called" << std::endl;
 	type = "Cat";
+	brain = new Brain();
 }
 
 Cat::Cat(const Cat &src)
@@ -35,6 +36,7 @@ Cat::Cat(const Cat &src)
 Cat::~Cat(void)
 {
 	std::cout << "CAT: destructor called" << std::endl;
+	delete brain;
 }
 
 /*
@@ -46,6 +48,7 @@ Cat &Cat::operator=(const Cat &src)
 	if (this != &src)
 	{
 		type = src.type;
+		brain = src.brain;
 	}
 	return (*this);
 }
@@ -57,6 +60,11 @@ Cat &Cat::operator=(const Cat &src)
 void Cat::makeSound(void) const
 {
 	std::cout << "Meeeooooww" << std::endl;
+}
+
+Brain	*Cat::getBrain(void) const
+{
+	return (brain);
 }
 
 /* ************************************************************************** */

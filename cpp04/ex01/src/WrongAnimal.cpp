@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
+/*   WrongAnimal.cpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:03 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/21 20:36:17 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:34:13 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 20:34:13 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Cat.hpp"
+#include "../include/WrongAnimal.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat(void)
+WrongAnimal::WrongAnimal(void)
 {
-	std::cout << "CAT: Default constructor called" << std::endl;
-	type = "Cat";
+	std::cout << "WRONGANIMAL: Default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &src)
+WrongAnimal::WrongAnimal(const WrongAnimal &src)
 {
-	std::cout << "CAT: Copy constructor called" << std::endl;
+	std::cout << "WRONGANIMAL: Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -32,17 +31,18 @@ Cat::Cat(const Cat &src)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Cat::~Cat(void)
+WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "CAT: destructor called" << std::endl;
+	std::cout << "WRONGANIMAL: Destructor called" << std::endl;
 }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat &Cat::operator=(const Cat &src)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &src)
 {
+	std::cout << "WRONGANIMAL: Assignment operator called" << std::endl;
 	if (this != &src)
 	{
 		type = src.type;
@@ -54,9 +54,18 @@ Cat &Cat::operator=(const Cat &src)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Cat::makeSound(void) const
+void WrongAnimal::makeSound(void) const
 {
-	std::cout << "Meeeooooww" << std::endl;
+	std::cout << "*indistinguishable noises*" << std::endl;
+}
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
+
+const std::string &WrongAnimal::getType(void) const
+{
+	return (type);
 }
 
 /* ************************************************************************** */

@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   WrongDog.hpp                                            :+:    :+:            */
+/*   Brain.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:06 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/21 20:34:06 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 21:28:37 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 22:05:05 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGDOG_HPP
-# define WRONGDOG_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include <iostream>
-# include "WrongAnimal.hpp"
+# include <string>
 
-class WrongDog: public WrongAnimal
+class Brain
 {
-	public:
-		WrongDog(void);
-		WrongDog(const WrongDog &src);
-		~WrongDog(void);
-		WrongDog &operator=(const WrongDog &src);
 
-		void makeSound(void) const;
+	public:
+		Brain(void);
+		Brain(const Brain &src);
+		~Brain(void);
+
+		Brain &operator=(const Brain &src);
+		std::string ideas[100];
+
+	private:
+
 };
 
-#endif /* ********************************************************** WRONGDOG_H */
+#endif /* *********************************************************** BRAIN_H */

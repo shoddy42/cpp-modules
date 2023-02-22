@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/21 20:52:03 by wkonings      ########   odam.nl          #
+#    Updated: 2023/02/21 21:27:21 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # --------------- VARIABLES --------------- #
 # ----------------------------------------- #
 
-NAME 	:= polymorphism
+NAME 	:= world_on_fire
 FLAGS 	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
@@ -32,9 +32,9 @@ OBJ_DIR		:= obj
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-HEADER_FILES := Animal Cat Dog WrongAnimal WrongCat WrongDog
+HEADER_FILES := Animal Cat Dog WrongAnimal WrongCat WrongDog Brain
 
-MAIN_FILES	:= main Animal Cat Dog WrongAnimal WrongCat WrongDog
+MAIN_FILES	:= main Animal Cat Dog WrongAnimal WrongCat WrongDog Brain
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 

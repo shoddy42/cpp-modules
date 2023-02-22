@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Dog.cpp                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 20:33:56 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 20:38:34 by wkonings      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Dog.hpp"
 
 /*
@@ -33,23 +45,18 @@ Dog &Dog::operator=(const Dog &src)
 {
 	if (this != &src)
 	{
-		// this->_value = rhs.getValue();
+		type = src.type;
 	}
-	return *this;
+	return (*this);
 }
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Dog::makeSound(void)
+void Dog::makeSound(void) const
 {
-	std::cout << type << std::endl;
+	std::cout << "Wooooof" << std::endl;
 }
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
-
 
 /* ************************************************************************** */

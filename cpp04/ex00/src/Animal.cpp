@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Animal.cpp                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/02/21 20:34:13 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 20:34:13 by wkonings      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/Animal.hpp"
 
 /*
@@ -30,11 +42,12 @@ Animal::~Animal(void)
 
 Animal &Animal::operator=(const Animal &src)
 {
+	std::cout << "ANIMAL: Assignment operator called" << std::endl;
 	if (this != &src)
 	{
 		type = src.type;
 	}
-	return *this;
+	return (*this);
 }
 
 /*
@@ -43,17 +56,16 @@ Animal &Animal::operator=(const Animal &src)
 
 void Animal::makeSound(void) const
 {
-	std::cout << type << std::endl;
-}
-
-const std::string &Animal::getType(void) const
-{
-	return (type);
+	std::cout << "*indistinguishable noises*" << std::endl;
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+const std::string &Animal::getType(void) const
+{
+	return (type);
+}
 
 /* ************************************************************************** */

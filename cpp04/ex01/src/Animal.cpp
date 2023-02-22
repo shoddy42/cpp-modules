@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
+/*   Animal.cpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:03 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/21 20:36:17 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:34:13 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/22 00:25:00 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Cat.hpp"
+#include "../include/Animal.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat(void)
+Animal::Animal(void)
 {
-	std::cout << "CAT: Default constructor called" << std::endl;
-	type = "Cat";
+	std::cout << "ANIMAL: Default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &src)
+Animal::Animal(const Animal &src)
 {
-	std::cout << "CAT: Copy constructor called" << std::endl;
+	std::cout << "ANIMAL: Copy constructor called" << std::endl;
 	*this = src;
 }
 
@@ -32,17 +31,18 @@ Cat::Cat(const Cat &src)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Cat::~Cat(void)
+Animal::~Animal(void)
 {
-	std::cout << "CAT: destructor called" << std::endl;
+	std::cout << "ANIMAL: Destructor called" << std::endl;
 }
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat &Cat::operator=(const Cat &src)
+Animal &Animal::operator=(const Animal &src)
 {
+	std::cout << "ANIMAL: Assignment operator called" << std::endl;
 	if (this != &src)
 	{
 		type = src.type;
@@ -54,9 +54,23 @@ Cat &Cat::operator=(const Cat &src)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Cat::makeSound(void) const
+void Animal::makeSound(void) const
 {
-	std::cout << "Meeeooooww" << std::endl;
+	std::cout << "*indistinguishable noises*" << std::endl;
+}
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
+
+const std::string &Animal::getType(void) const
+{
+	return (type);
+}
+
+Brain *Animal::getBrain(void) const
+{
+	return (NULL);
 }
 
 /* ************************************************************************** */

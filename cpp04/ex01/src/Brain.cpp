@@ -1,51 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cat.cpp                                            :+:    :+:            */
+/*   Brain.cpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:03 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/21 20:36:17 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 21:28:35 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 22:17:32 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Cat.hpp"
+#include "../include/Brain.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Cat::Cat(void)
+Brain::Brain()
 {
-	std::cout << "CAT: Default constructor called" << std::endl;
-	type = "Cat";
+	std::cout << "BRAIN: Default constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &src)
+Brain::Brain(const Brain &src)
 {
-	std::cout << "CAT: Copy constructor called" << std::endl;
+	std::cout << "BRAIN: Copy constructor called" << std::endl;
 	*this = src;
 }
+
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Cat::~Cat(void)
+Brain::~Brain()
 {
-	std::cout << "CAT: destructor called" << std::endl;
+	std::cout << "BRAIN: Destructor called" << std::endl;
 }
+
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat &Cat::operator=(const Cat &src)
+Brain &Brain::operator=(const Brain &src)
 {
+	std::cout << "BRAIN COPYING" << std::endl;
 	if (this != &src)
 	{
-		type = src.type;
+		for (int i = 0; i < 100; i++)
+			ideas[i] = src.ideas[i];
 	}
 	return (*this);
 }
@@ -54,9 +57,10 @@ Cat &Cat::operator=(const Cat &src)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Cat::makeSound(void) const
-{
-	std::cout << "Meeeooooww" << std::endl;
-}
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
+
 
 /* ************************************************************************** */

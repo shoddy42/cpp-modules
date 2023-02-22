@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   WrongDog.hpp                                            :+:    :+:            */
+/*   Animal.hpp                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/21 20:34:06 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/21 20:34:06 by wkonings      ########   odam.nl         */
+/*   Created: 2023/02/21 20:39:42 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/02/21 21:48:12 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGDOG_HPP
-# define WRONGDOG_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 # include <iostream>
-# include "WrongAnimal.hpp"
+# include <string>
+# include "Brain.hpp"
 
-class WrongDog: public WrongAnimal
+class Animal
 {
-	public:
-		WrongDog(void);
-		WrongDog(const WrongDog &src);
-		~WrongDog(void);
-		WrongDog &operator=(const WrongDog &src);
+	protected:
+		std::string type;
 
-		void makeSound(void) const;
+	public:
+		Animal(void);
+		Animal(const Animal &src);
+		virtual ~Animal(void);
+		virtual Animal &operator=(const Animal &src);
+		virtual Brain *getBrain(void) const;
+		const std::string &getType(void) const;
+		virtual void makeSound(void) const;
 };
 
-#endif /* ********************************************************** WRONGDOG_H */
+#endif /* ********************************************************** ANIMAL_H */
