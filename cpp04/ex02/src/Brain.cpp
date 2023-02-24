@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/21 21:28:35 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 19:10:07 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/23 23:18:32 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Brain::~Brain()
 
 Brain &Brain::operator=(const Brain &src)
 {
-	std::cout << "BRAIN COPYING" << std::endl;
+	std::cout << "BRAIN: Assignment operator called" << std::endl;
 	if (this != &src)
 	{
 		for (int i = 0; i < 100; i++)

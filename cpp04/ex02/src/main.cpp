@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/20 23:10:31 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/22 23:05:24 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/23 23:52:21 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void leak_check(void)
 int main(void)
 {
 	Animal *animals[10];
-	
 	Brain *brain;
 	Brain *other_brain;
 
@@ -42,8 +41,8 @@ int main(void)
 	std::cout << "set brain: " << animals[0]->getBrain()->ideas[2] << std::endl;
 	std::cout << "pre copied brain: " << animals[6]->getBrain()->ideas[2] << std::endl;
 
-	*animals[6] = *animals[0];
-	// *(animals[6]) = *(animals[0]);
+	// *animals[6] = *animals[0];
+	*(animals[6]) = *(animals[0]);
 
 	// animals[6]->makeSound();
 	std::cout << "after copied brain: " << animals[6]->getBrain()->ideas[2] << std::endl;
@@ -52,16 +51,12 @@ int main(void)
 	std::cout << "check brain: " << animals[6]->getBrain()->ideas[2] << std::endl;
 	// *other_brain = *brain;
 	// std::cout << "copied brain: " << animals[5]->getBrain()->ideas[2] << std::endl;
-	// brain = NULL;
-	// other_brain = NULL;
-	for (int i = 0; i < 8; i++)
-	{
-		if (animals[i] && animals[i]->getBrain() != NULL)
-			delete animals[i];
-	}
-		
-	// while (true)
-	// 	;
+
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	// if (animals[i])
+	// 		delete animals[i];
+	// }
 	// atexit(&leak_check);
 	return (0);
 }

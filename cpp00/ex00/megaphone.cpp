@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/01/27 11:34:35 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/14 15:31:13 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/02/22 19:58:28 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(int ac, char **av)
 	for (int i = 1; i < ac; i++)
 	{
 		std::string message = ftpp_toupper(av[i]);
-		message.erase(0, message.find_first_not_of(" ")); //remove starting spaces
-        message.erase(message.find_last_not_of(" ") + 1); //remove trailing spaces
+		message.erase(0, message.find_first_not_of(" "));
+        message.erase(message.find_last_not_of(" ") + 1);
 		std::cout << message << " ";
 	}
 	std::cout << std::endl;
