@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/10 10:39:21 by wkonings      ########   odam.nl          #
+#    Updated: 2023/03/09 18:51:15 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,22 @@ CC		:= c++
 
 SRC_DIR		:= .
 OBJ_DIR		:= obj
+INC_DIR		:= .
 
 # ----------------------------------------- #
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-HEADER_FILES := Harl
+INC_FILES	:= Harl
 
 MAIN_FILES	:= main Harl
 
-FILES	:=	$(MAIN_FILES:%=%.cpp)
+FILES		:= $(MAIN_FILES:%=%.cpp)
 
-# SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
-SRCS	:=	$(FILES)
+INCLUDES:=	$(addprefix $(INC_DIR)/, $(INC_FILES:%=%.hpp))
+SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
 OBJS	:=	$(addprefix $(OBJ_DIR)/, $(FILES:%.cpp=%.o))
-HEADERS	:=	$(HEADER_FILES:%=%.hpp)
+
 
 # ----------------------------------------- #
 # --------- COLOURS / FORMATTING ---------- #
@@ -68,7 +69,7 @@ VIOLET	:= \1\33[38;5;183m\2
 # --------------- RECIPES ----------------- #
 # ----------------------------------------- #
 
-$(NAME): $(HEADERS) $(OBJS) $(MAKEFILE)
+$(NAME): $(HEADERS) $(OBJS) $(MAKEFILE) $(INCLUDES)
 	@printf "$(BLUE)Compiling $(YELLOW)$(NAME)\n$(END)"
 	@$(CC) $(FLAGS) $(SRCS) -o $(NAME) 
 	@printf "$(YELLOW)$(NAME) compiled!\n$(END)"

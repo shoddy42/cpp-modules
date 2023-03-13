@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 06:50:05 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/10 08:33:53 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/03/09 18:29:25 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 {
 	if (ac != 4)
 	{
-		std::cout << "bad" << std::endl;
+		std::cout << "Usage: ./loser <file> <find> <replace>" << std::endl;
 		return (1);
 	}
 
@@ -34,18 +34,17 @@ int	main(int ac, char **av)
 	outfile.open(std::string(av[1]) + ".replace", std::ios::out | std::ios::trunc);
 	if (!outfile.is_open())
 	{
-		std::cout << "Failed to open new infile " << av[1] << ".replace" << std::endl;
+		std::cout << "Failed to open new file " << av[1] << ".replace" << std::endl;
 		return (1);
 	}
 
 	std::string line;
-	size_t i, start;
+	size_t i;
 	size_t replace_len = std::string(av[3]).length();
 	size_t target_len = std::string(av[2]).length();
 	while (std::getline(infile, line))
 	{
 		i = 0;
-		start = 0;
 		i = line.find(av[2], i);
 		while (i != std::string::npos)
 		{

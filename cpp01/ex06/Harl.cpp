@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 08:44:32 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/10 10:04:41 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/03/09 19:06:20 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Harl::Harl(void)
 {
 }
 
-Harl::~Harl()
+Harl::~Harl(void)
 {
 }
 

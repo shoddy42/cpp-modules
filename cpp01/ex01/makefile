@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/08 06:10:12 by wkonings      ########   odam.nl          #
+#    Updated: 2023/03/07 19:10:43 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # --------------- VARIABLES --------------- #
 # ----------------------------------------- #
 
-NAME 	:= zombie
+NAME 	:= horde
 FLAGS 	:= -Wall -Wextra -Werror -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
@@ -26,15 +26,19 @@ CC		:= c++
 
 SRC_DIR		:= src
 OBJ_DIR		:= obj
+INC_DIR		:= include
 
 # ----------------------------------------- #
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
+INC_FILES	:= Zombie
+
 MAIN_FILES	:= main Zombie zombieHorde
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 
+INCLUDES:=	$(addprefix $(INC_DIR)/, $(INC_FILES:%=%.hpp))
 SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
 OBJS	:=	$(addprefix $(OBJ_DIR)/, $(FILES:%.cpp=%.o))
 
@@ -64,7 +68,7 @@ VIOLET	:= \1\33[38;5;183m\2
 # --------------- RECIPES ----------------- #
 # ----------------------------------------- #
 
-$(NAME): $(OBJS) $(MAKEFILE)
+$(NAME): $(OBJS) $(MAKEFILE) $(INCLUDES)
 	@printf "$(BLUE)Compiling $(YELLOW)$(NAME)\n$(END)"
 	@$(CC) $(FLAGS) $(SRCS) -o $(NAME) 
 	@printf "$(YELLOW)$(NAME) compiled!\n$(END)"

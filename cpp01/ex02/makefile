@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/10 04:53:59 by wkonings      ########   odam.nl          #
+#    Updated: 2023/03/08 16:13:06 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,18 +26,22 @@ CC		:= c++
 
 SRC_DIR		:= .
 OBJ_DIR		:= obj
+INC_DIR		:= include
 
 # ----------------------------------------- #
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
+INC_FILES	:=
+
 MAIN_FILES	:= main
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 
-# SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
-SRCS	:=	$(FILES)
+INCLUDES:=	$(addprefix $(INC_DIR)/, $(INC_FILES:%=%.hpp))
+SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
 OBJS	:=	$(addprefix $(OBJ_DIR)/, $(FILES:%.cpp=%.o))
+
 
 # ----------------------------------------- #
 # --------- COLOURS / FORMATTING ---------- #

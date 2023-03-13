@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/24 00:06:04 by wkonings      ########   odam.nl          #
+#    Updated: 2023/03/13 20:14:47 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # ----------------------------------------- #
 
 NAME 	:= mommy
-FLAGS 	:= -g -Wall -Wextra -Werror -std=c++98
+FLAGS 	:= -Wall -Wextra -Werror -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++

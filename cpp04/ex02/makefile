@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/22 23:04:51 by wkonings      ########   odam.nl          #
+#    Updated: 2023/03/13 20:14:53 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # ----------------------------------------- #
 
 NAME 	:= abstract
-FLAGS 	:= -g -Wall -Wextra -Werror -Wshadow -std=c++98
+FLAGS 	:= -Wall -Wextra -Werror -Wshadow -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++

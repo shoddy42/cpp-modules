@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Form.hpp                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/03/13 20:44:16 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/03/13 20:44:16 by wkonings      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FORM_HPP
 # define FORM_HPP
 # include <iostream>
 # include <string>
-// # include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
@@ -27,7 +39,7 @@ class Form
 		bool				getSigned(void) const;
 		int 				getSignGrade(void) const;
 		int 				getExecGrade(void) const;
-		void				beSigned(Bureaucrat &bureaucrat);
+		void				beSigned(const Bureaucrat &bureaucrat);
 		Form &operator=(const Form &src);
 };
 

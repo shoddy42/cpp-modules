@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/10 05:17:06 by wkonings      ########   odam.nl          #
+#    Updated: 2023/03/08 16:38:06 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,20 @@ CC		:= c++
 
 SRC_DIR		:= .
 OBJ_DIR		:= obj
+INC_DIR		:= .
 
 # ----------------------------------------- #
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-MAIN_FILES	:= main HumanA HumanB Weapon
+INC_FILES	:= Weapon HumanA HumanB
+
+MAIN_FILES	:= main Weapon HumanA HumanB
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 
-# SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
-SRCS	:=	$(FILES)
+INCLUDES:=	$(addprefix $(INC_DIR)/, $(INC_FILES:%=%.hpp))
+SRCS	:=	$(addprefix $(SRC_DIR)/, $(FILES))
 OBJS	:=	$(addprefix $(OBJ_DIR)/, $(FILES:%.cpp=%.o))
 
 # ----------------------------------------- #
@@ -65,7 +68,7 @@ VIOLET	:= \1\33[38;5;183m\2
 # --------------- RECIPES ----------------- #
 # ----------------------------------------- #
 
-$(NAME): $(OBJS) $(MAKEFILE)
+$(NAME): $(OBJS) $(MAKEFILE) $(INCLUDES)
 	@printf "$(BLUE)Compiling $(YELLOW)$(NAME)\n$(END)"
 	@$(CC) $(FLAGS) $(SRCS) -o $(NAME) 
 	@printf "$(YELLOW)$(NAME) compiled!\n$(END)"

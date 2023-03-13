@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 08:44:40 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/10 10:03:43 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/03/09 18:49:34 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Harl
 {
 	public:
 		Harl(void);
-		~Harl();
+		~Harl(void);
 		void	complain(std::string level);
 
 	private:
