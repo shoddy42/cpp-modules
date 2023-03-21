@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/13 20:16:32 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/03/14 00:36:16 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/03/15 20:42:30 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ Intern::Intern(const Intern &src)
 {
 	if (this != &src)
 		*this = src;
-
 }
 
 /*
@@ -60,22 +59,30 @@ std::ostream &operator<<(std::ostream &stream, const Intern &i)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Intern::makeForm(const std::string &name, const std::string &target)
+Form *Intern::makeForm(const std::string &name, const std::string &target)
 {
-	const std::string form_types[3] = 
+	t_form_list forms[] = 
 	{
-		"presidential pardon", "shrubbery creation", "robotomy request"
+		{ "presidential pardon", new Pardon(target) },
+		{ "robotomy request", new Robotomy(target) },
+		{ "shrubbery creation", new Shrubbery(target) },
+		{ "", NULL }
 	};
+	Form	*form = NULL;
 
-	Form *test;
-	for (size_t i = 0; i < 3; i++)
-		if (name == form_types[i])
-
-			
-	
-	// return (test);
+	for (int i = 0; forms[i].form_type != NULL; i++)
+	{
+		if (forms[i].form_name == name)
+			form = forms[i].form_type;
+		else
+			delete forms[i].form_type;
+	}
+	if (form == NULL)
+		std::cout << "Intern did not find the " << name << " form" << std::endl;
+	else
+		std::cout << "Intern creates " << name  << " form" << std::endl;
+	return (form);
 }
-
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
