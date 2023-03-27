@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/06 18:42:23 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/03/21 20:51:17 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/03/28 00:36:20 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef enum t_types
 	INT,
 	FLOAT,
 	DOUBLE,
+	SPECIAL_DOUBLE,
+	SPECIAL_FLOAT,
 }	e_types;
 
 class Bureaucrat;
@@ -47,7 +49,7 @@ class ScalarConverter
 		e_types	special_cases(std::string &literal) const;
 		int		set_type(std::string &literal);
 		e_types find_type(std::string &literal) const;
-		// void convert_char(std::string &literal) const;
+		void convert_char(std::string &literal) const;
 		// void convert_int(std::string &literal) const;
 		// void convert_float(std::string &literal) const;
 		// void convert_double(std::string &literal) const;
