@@ -6,12 +6,12 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/13 05:14:41 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/15 14:23:00 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/05/25 19:26:45 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Fixed.hpp"
+#include <iostream>
 
 int main(void)
 {

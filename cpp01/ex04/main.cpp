@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/10 06:50:05 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/03/09 18:29:25 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/07/04 19:25:41 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	main(int ac, char **av)
 	size_t target_len = std::string(av[2]).length();
 	while (std::getline(infile, line))
 	{
-		i = 0;
 		i = line.find(av[2], i);
 		while (i != std::string::npos)
 		{

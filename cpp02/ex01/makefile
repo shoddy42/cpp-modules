@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/02/13 05:40:48 by wkonings      ########   odam.nl          #
+#    Updated: 2023/05/25 19:21:37 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ VIOLET	:= \1\33[38;5;183m\2
 
 $(NAME): $(HEADERS) $(OBJS) $(MAKEFILE)
 	@printf "$(BLUE)Compiling $(YELLOW)$(NAME)\n$(END)"
-	@$(CC) $(FLAGS) $(SRCS) -o $(NAME) 
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME) 
 	@printf "$(YELLOW)$(NAME) compiled!\n$(END)"
 
 all: $(NAME)

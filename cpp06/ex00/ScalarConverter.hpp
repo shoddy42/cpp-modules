@@ -6,14 +6,16 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/06 18:42:23 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/03/28 00:36:20 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/04/21 22:02:00 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 # include <iostream>
+# include <iomanip>
 # include <string>
+# include <cmath>
 
 typedef enum t_types
 {
@@ -22,38 +24,26 @@ typedef enum t_types
 	INT,
 	FLOAT,
 	DOUBLE,
-	SPECIAL_DOUBLE,
 	SPECIAL_FLOAT,
+	SPECIAL_DOUBLE,
 }	e_types;
-
-class Bureaucrat;
 
 class ScalarConverter
 {
 	public:
-		void convert(std::string &literal);
+		static void convert(std::string &literal);
 
 	private:
-		e_types	_type;
-		// char	_char;
-		// int		_int;
-		// float	_float;
-		// double	_double;
-		// bool is_valid(std::string &literal) const;
+		static e_types	_type;
 
-		// bool is_char(std::string &literal) const;
-		// bool is_int(std::string &literal) const;
-		// bool is_float(std::string &literal) const;
-		// bool is_double(std::string &literal) const;
-
-		e_types	special_cases(std::string &literal) const;
-		int		set_type(std::string &literal);
-		e_types find_type(std::string &literal) const;
-		void convert_char(std::string &literal) const;
-		// void convert_int(std::string &literal) const;
-		// void convert_float(std::string &literal) const;
-		// void convert_double(std::string &literal) const;
-
+		static int		set_type(std::string &literal);
+		static e_types	get_type(void);
+		static e_types	special_cases(std::string &literal);
+		static e_types	regular_cases(std::string &literal);
+		static void 	convert_char(std::string &literal);
+		static void 	convert_int(std::string &literal);
+		static void 	convert_float(std::string &literal);
+		static void 	convert_double(std::string &literal);
 };
 
 #endif /* ****************************************************** SCALARCONVERTER_H */

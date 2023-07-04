@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/15 20:55:55 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/03/28 00:27:08 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/04/21 21:31:29 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 int	main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
-	// float value;
-	if (!av[1] || !av[1][0])
+	if (!av[1] || !av[1][0] || ac < 2)
 	{
 		std::cout << "Error: empty input" << std::endl;
 		return (1);
 	}
 	
 	std::string test = av[1];
+	std::string tes2 = "45.6f";
 	ScalarConverter a;
 
 	a.convert(test);
-	// value = std::strtod(test, NULL);
-	// std::cout << static_cast<float>(value) << std::endl;
+	a.convert(test);
+	a.convert(test);
+	a.convert(tes2);
 	return (0);
 }

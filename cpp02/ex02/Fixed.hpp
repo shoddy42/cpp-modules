@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   Fixed.hpp                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/05/25 19:30:10 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/05/25 19:30:31 by wkonings      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 # define FIXED_HPP
 # include <iostream>
@@ -6,8 +18,8 @@
 class Fixed
 {
 	private:
-		int					_value;
 		static const int	_fraction_bits = 8;
+		int					_value;
 
 	public:
 		Fixed();
@@ -46,4 +58,5 @@ class Fixed
 };
 
 std::ostream &operator << (std::ostream &stream, const Fixed &instance);
+
 #endif /* *********************************************************** FIXED_H */

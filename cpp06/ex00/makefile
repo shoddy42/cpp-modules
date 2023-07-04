@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/03/20 13:05:41 by wkonings      ########   odam.nl          #
+#    Updated: 2023/04/17 16:59:18 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 # ----------------------------------------- #
 
 NAME 	:= scalar_conversion
-FLAGS 	:= -Wall -Wextra #-Werror -std=c++98
+FLAGS 	:= -Wall -Wextra -Werror -std=c++98
 DEBUG 	:= #-g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++

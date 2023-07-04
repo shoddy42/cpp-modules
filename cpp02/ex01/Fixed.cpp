@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/02/13 05:21:03 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/02/15 14:26:06 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/05/25 19:25:36 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ Fixed::Fixed(void): _value(0)
 Fixed::Fixed(const Fixed &src)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = src;
+	if (this != &src)
+		*this = src;
 }
 
 Fixed::Fixed(const int number)
@@ -72,6 +73,6 @@ float	Fixed::toFloat(void) const
 
 std::ostream & operator << (std::ostream & stream, const Fixed & instance)
 {
-	stream << instance.toFloat() << std::endl;
+	stream << instance.toFloat();
 	return (stream);
 }
