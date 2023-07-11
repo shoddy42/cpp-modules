@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   MutatedStack.hpp 		                            :+:    :+:            */
+/*   BitcoinExchange.hpp                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/06 18:42:23 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/05/02 15:24:28 by wkonings      ########   odam.nl         */
+/*   Created: 2023/07/11 19:12:22 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/07/11 21:42:03 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTATEDSTACK_HPP
-# define MUTATEDSTACK_HPP
-# include <stack>
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
+# include <map>
+# include <iostream>
+# include <string>
 
-template <typename T>
-class MutatedStack: public std::stack<T>
+class BitcoinExchange
 {
 	public:
-		MutatedStack<T>(void) { return; };
-		// MutatedStack<T>(unsigned int n) { return; };
-		~MutatedStack<T>(void) { return; };
-
-		typedef typename std::stack<T>::container_type::iterator iterator;
-
-		iterator begin(void) { return (this->c.begin()); };
-		iterator end(void) { return (this->c.end()); };
-
+		BitcoinExchange (void);
+		// BitcoinExchange<T>(unsigned int n) { return; };
+		~BitcoinExchange (void);
+		std::map<std::string, float> database;
 	private:
 		unsigned int 		_capacity;
 };

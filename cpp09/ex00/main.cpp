@@ -5,37 +5,27 @@
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/02/16 20:11:01 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/11 19:04:20 by wkonings      ########   odam.nl         */
+/*   Created: 2023/07/11 19:18:37 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/07/11 21:42:19 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MutatedStack.hpp"
-#include <iomanip>
-#include <iostream>
+#include "BitcoinExchange.hpp"
 
-//todo: write comparisson test between list and mutantstack
-int	main(void)
+int	main(int ac, char **av)
 {
-	MutatedStack<int> test;
-	test.push(10);
-	test.push(50);
-	test.push(500);
-	test.push(5000);
-	test.push(50000);
-	test.push(500000);
-	test.push(5000000);
-	test.push(50000000);
-	test.push(500000000);
-
-	MutatedStack<int>::iterator e;
-	e = test.begin();
-
-	for (size_t i = 0; i < 10; i++)
+	(void)av;
+	if (ac != 2)
 	{
-		std::cout << *e << std::endl;
-		e++;
+		std::cerr << "usage: ./btc <data.csv>" << std::endl;
+		return (1);
 	}
+	BitcoinExchange();
+
+
 	
-	return (0);
+	//todo: parse file
+
+	//todo: put days in a map
+
 }
