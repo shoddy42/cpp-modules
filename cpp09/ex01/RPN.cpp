@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/19 12:24:25 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/19 13:19:56 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/07/19 16:38:17 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
-
 
 RPN::RPN(void)
 {
@@ -28,7 +27,6 @@ RPN::RPN(const RPN &src)
 		*this = src;
 }
 
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -36,7 +34,6 @@ RPN::RPN(const RPN &src)
 RPN::~RPN(void)
 {
 }
-
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -78,7 +75,6 @@ void RPN::do_math(char operation)
 {
 	int number = stack.top();
 	stack.pop();
-	
 	// std::cout << "doing math operation: " << stack.top() << " " << operation << " " << number << " = ";
 	if (operation == '+')
 		stack.top() += number;

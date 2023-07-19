@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/19 13:21:59 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/19 14:37:15 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/07/19 16:13:02 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <fstream>
 # include <string>
 # include <vector>
-# include <list>
+# include <deque> 
+// # include <list>
+//todo: choose between deque and list, deque probably easier
 
 class PmergeMe
 {
