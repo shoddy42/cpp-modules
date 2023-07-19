@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   PmergeMe.hpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/07/11 19:18:37 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/19 13:28:28 by wkonings      ########   odam.nl         */
+/*   Created: 2023/07/19 13:21:59 by wkonings      #+#    #+#                 */
+/*   Updated: 2023/07/19 14:37:15 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
-#include <map>
-#include <fstream>
 
 
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <vector>
+# include <list>
 
-int	main(int ac, char **av)
+class PmergeMe
 {
-	BitcoinExchange btc;
-	(void)av;
-	if (ac != 2)
-	{
-		std::cerr << "usage: ./btc <data.csv>" << std::endl;
-		return (1);
-	}
-	btc.fill_database();
-	btc.exchange(std::string(av[1]));
-}
+	public:
+		PmergeMe(void);
+		PmergeMe(const PmergeMe &src);
+		~PmergeMe(void);
+		PmergeMe &operator=(PmergeMe const &src);
+		// void	do_math(char operation);
+		
+	private:
+
+};
+
+
+#endif /* ********************************************* MUTATED_STACK_HPP */

@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/07/19 09:04:33 by wkonings      ########   odam.nl          #
+#    Updated: 2023/07/19 13:23:24 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 # --------------- VARIABLES --------------- #
 # ----------------------------------------- #
 
-NAME 	:= btc
+NAME 	:= PmergeMe
 FLAGS 	:= -Wall -Wextra -Werror -std=c++98
 DEBUG 	:= -g -fsanitize=address
 MAKEFILE:= makefile
@@ -31,9 +31,9 @@ OBJ_DIR		:= obj
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-HEADER_FILES := BitcoinExchange
+HEADER_FILES := PmergeMe
 
-MAIN_FILES	:= main BitcoinExchange
+MAIN_FILES	:= main PmergeMe
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 
