@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/19 13:21:59 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/19 16:13:02 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/08/03 00:33:14 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@
 # include <string>
 # include <vector>
 # include <deque> 
+// # include <algorithm>
 // # include <list>
+# include <chrono>
+# include <ctime>
+
+# include <unistd.h> //remove 
 //todo: choose between deque and list, deque probably easier
 
 class PmergeMe
@@ -29,6 +34,8 @@ class PmergeMe
 		PmergeMe(const PmergeMe &src);
 		~PmergeMe(void);
 		PmergeMe &operator=(PmergeMe const &src);
+		uint64_t get_time_ms(void);
+		
 		// void	do_math(char operation);
 		
 	private:

@@ -6,12 +6,12 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/11 19:18:37 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/19 18:08:01 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/08/03 00:32:29 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <algorithm>
+// #include <algorithm>
 
 //todo: clean up the code
 //todo: add timer
@@ -109,7 +109,6 @@ std::vector<T> mergeSort(const std::vector<T> &vec)
 	return (merge(mergeSort(left), mergeSort(right)));
 }
 
-//todo: filter bad input
 std::vector<int> makeVector(char **av)
 {
 	std::vector<int> input;
@@ -129,6 +128,8 @@ std::deque<int> makeDeque(char **av)
 }
 
 
+//todo: filter bad input
+//todo: main cleanup, move functions so class
 int main(int ac, char **av)
 {
 	if (ac < 2)
@@ -136,11 +137,17 @@ int main(int ac, char **av)
 		std::cerr << "Usage: ./PmergeMe (sequence of numbers)" << std::endl;
 		exit(1);
 	}
+	// std::chrono::time_point<std::chrono::system_clock, std::chrono::duration<std::chrono::milliseconds> time = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
+	// std::chrono::milliseconds time
+	uint64_t time = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	std::vector<int> unsortedVec = makeVector(av);
     std::vector<int> sortedVec = mergeSort(unsortedVec);
-
+	uint64_t time2 = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+	
+	uint64_t dqtime = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	std::deque<int> unsortedDeq = makeDeque(av);
     std::deque<int> sortedDeq = mergeSort(unsortedDeq);
+	uint64_t dqtime2 = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
     std::cout << "Before: ";
     for (std::vector<int>::const_iterator it = unsortedVec.begin(); it != unsortedVec.end(); ++it) 
@@ -152,5 +159,7 @@ int main(int ac, char **av)
 	
 
     std::cout << std::endl;
+	std::cout << "Time to process a range of " << ac - 1 << " elements with std::vector : " << (time2 - time) << " us" << std::endl;
+	std::cout << "Time to process a range of " << ac - 1 << " elements with std::deque : " << (dqtime2 - dqtime) << " us" << std::endl;
     return (0);
 }
