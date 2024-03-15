@@ -17,6 +17,11 @@
 # include <fstream>
 # include <string>
 # include <stack>
+# include <cstdlib>
+
+// colours
+# define RED	"\1\33[38;5;196m\2"	
+# define RESET	"\1\33[0m\2"
 
 class RPN
 {
@@ -25,15 +30,13 @@ class RPN
 		RPN(const RPN &src);
 		~RPN(void);
 		RPN &operator=(RPN const &src);
-		void	validate_input(std::string input);
-		void	build_stack(std::string input);
-		void	do_math(char operation);
+		void	calculate(std::string input);
 		
 	private:
+		void	validate_input(std::string input);
+		void	do_math(char operation);
 		std::stack<int> stack;
 		int result;
-		// std::map<std::string, float> database;
 };
 
-
-#endif /* ********************************************* MUTATED_STACK_HPP */
+#endif

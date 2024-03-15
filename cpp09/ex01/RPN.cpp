@@ -53,22 +53,43 @@ RPN &RPN::operator=(RPN const &src)
 void RPN::validate_input(std::string input)
 {
 	bool valid = true;
+	bool last_was_number = false;
 
-	for (size_t i = 0; i < input.length() && valid == true; i++)
+	int skip_initial_spaces = 0;
+	while (input[skip_initial_spaces] == ' ')
+		skip_initial_spaces++;
+	if (!std::isdigit(input[skip_initial_spaces]))
 	{
-		if (input[i] != '/' && input[i] != '-' && input[i] != '+' && input[i] != '*' && !std::isdigit(input[i]))
+		std::cerr << RED << "Error: " << RESET << "Invalid notation" << std::endl;
+		valid = false;
+	}
+	for (size_t i = skip_initial_spaces + 1; i < input.length() && valid == true; i++)
+	{
+		if (input[i] == ' ')
+			continue;
+		if (i == input.length() - 1 && (input[i] != '/' && input[i] != '-' && input[i] != '+' && input[i] != '*' && input[i] != ' '))
+		{
 			valid = false;
-		i++;
-		if (i == input.length())
-			break;
-		if (input[i] != ' ')
+		}
+		if (std::isdigit(input[i]) && last_was_number == false && valid == true)
+			last_was_number = true;
+		else if ((input[i] == '/' || input[i] == '-' || input[i] == '+' || input[i] == '*') && last_was_number == true && valid == true)
+			last_was_number = false;
+		else
+		{
+			std::cerr << RED << "Error: " << RESET << "Invalid notation." << std::endl;
+			std::cerr << input.substr(0, i) << RED << input[i] << RESET << input.substr(i + 1, input.length()) << std::endl;
+			for (size_t pad = 0; pad < i; pad++)
+				std::cout << " ";
+			
+			std::cerr << RED << "^" << RESET << std::endl;
+			if (std::isdigit(input[i]))
+				std::cerr << "Notation cannot end on a number. It must end on an instruction!" << std::endl;
 			valid = false;
+		}
 	}
 	if (!valid)
-	{
-		std::cerr << "Error" << std::endl;
 		exit(1);
-	}
 }
 
 void RPN::do_math(char operation)
@@ -89,27 +110,23 @@ void RPN::do_math(char operation)
 	result = stack.top();
 }
 
-void RPN::build_stack(std::string input)
+void RPN::calculate(std::string input)
 {
+	validate_input(input);
+
+	if (input.length() == 1)
+		result = input[0] - '0';
 	for (size_t i = 0; i < input.length(); i++)
 	{
 		if (input[i] == ' ')
 			continue;
 		else if (std::isdigit(input[i]))
 			stack.push(input[i] - '0');
-		else
+		else if (input[i] == '*' || input[i] == '+' || input[i] == '-' || input[i] == '/')
 			do_math(input[i]);
-			
 	}
 	std::cout << result << std::endl;
 }
-
-
-
-
-/*
-** --------------------------------- ACCESSOR ---------------------------------
-*/
 
 
 /* ************************************************************************** */

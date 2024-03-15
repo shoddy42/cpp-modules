@@ -47,6 +47,9 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &src)
 {
 	if (this == &src)
 		return (*this);
+	database.clear();
+	for (const std::pair<const std::string, float> &entry : src.database)
+		database[entry.first] = entry.second;
 	return (*this);
 }
 
@@ -96,7 +99,7 @@ void	BitcoinExchange::validate_database(std::string date)
 			valid = false;
 	if (valid == false)
 	{
-		std::cerr << "Error: error in database => " << date << std::endl;
+		std::cerr << "Error: error in database [" << date << "]" << std::endl;
 		exit (1);
 	}
 }
@@ -116,23 +119,31 @@ bool	BitcoinExchange::validate_input(std::string date)
 		if (!std::isdigit(date[i]) && date[i] != '.' && date[i] != '-' && date[i] != ' ' && date[i] != '|')
 			valid = false;
 	if (valid == false)
-		std::cerr << "Error: bad input => " << date << std::endl;
+		std::cerr << "Error: bad input [" << date << "]" << std::endl;
 	return (valid);
 }
 
 void	BitcoinExchange::exchange(std::string filename)
 {
-	std::ifstream file(filename);
+	if (filename.length() < 5 || filename.substr(filename.length() - 4) != ".csv")
+	{
+		std::cerr << "Error: not a .csv file! [" << filename << "]" << std::endl;
+		exit(1);
+	}
+	std::ifstream file(filename.c_str());
 	if (file.fail())
 	{
-		std::cerr << "Error: failed to open " << filename << std::endl;
+		std::cerr << "Error: failed to open [" << filename << "]" << std::endl;
 		exit(1);
 	}
 	
 	std::string line;
 	std::getline(file, line);
 	if (line != "date | value")
+	{
 		std::cerr << "Error: invalid header" << std::endl;
+		exit(1);
+	}
 
 	while (std::getline(file, line))
 	{
@@ -146,9 +157,9 @@ void	BitcoinExchange::exchange(std::string filename)
 		std::string str_value = line.substr(line.find_last_of(' ') + 1, line.length());
 		float value = std::atof(str_value.c_str());
 		if (value <= 0)
-			std::cerr << "Error: not a positive number." << std::endl;
+			std::cerr << "Error: not a positive number. [" << line << "]" << std::endl;
 		else if (value > 1000)
-			std::cerr << "Error: too large a number." << std::endl;
+			std::cerr << "Error: too large a number. [" << line << "]" << std::endl;
 		else
 			std::cout << date << " => " << value << " = " << i->second * value << std::endl;
 	}

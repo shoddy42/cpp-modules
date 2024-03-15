@@ -15,7 +15,7 @@
 # ----------------------------------------- #
 
 NAME 	:= btc
-FLAGS 	:= -Wall -Wextra -Werror -std=c++98
+FLAGS 	:= -Wall -Wextra -Werror
 DEBUG 	:= -g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++

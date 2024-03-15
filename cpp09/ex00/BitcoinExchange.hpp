@@ -14,8 +14,10 @@
 # define BITCOINEXCHANGE_HPP
 # include <map>
 # include <iostream>
+# include <iomanip>
 # include <fstream>
 # include <string>
+# include <cstdlib>
 
 class BitcoinExchange
 {
@@ -34,4 +36,4 @@ class BitcoinExchange
 };
 
 
-#endif /* ********************************************* MUTATED_STACK_HPP */
+#endif

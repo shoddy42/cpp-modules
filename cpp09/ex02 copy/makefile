@@ -6,7 +6,7 @@
 #    By: wkonings <wkonings@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/01/16 15:30:52 by wkonings      #+#    #+#                  #
-#    Updated: 2023/07/19 12:25:56 by wkonings      ########   odam.nl          #
+#    Updated: 2023/07/19 13:23:24 by wkonings      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 # --------------- VARIABLES --------------- #
 # ----------------------------------------- #
 
-NAME 	:= RPN
-FLAGS 	:= -Wall -Wextra -Werror -std=c++98
+NAME 	:= PmergeMe
+FLAGS 	:= -Wall -Wextra -Werror -std=c++17
 DEBUG 	:= -g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++
@@ -31,9 +31,9 @@ OBJ_DIR		:= obj
 # --------------- FILES ------------------- #
 # ----------------------------------------- #
 
-HEADER_FILES := RPN
+HEADER_FILES := PmergeMe
 
-MAIN_FILES	:= main RPN
+MAIN_FILES	:= main PmergeMe
 
 FILES	:=	$(MAIN_FILES:%=%.cpp)
 
@@ -89,11 +89,6 @@ fclean:	clean
 	@printf "$(BLUE)Fully cleaned $(YELLOW)$(NAME)\n$(END)"
 
 re: fclean all
-
-debug: $(HEADERS) $(OBJS) $(MAKEFILE)
-	@printf "$(BLUE)Compiling $(YELLOW)$(NAME) $(PURPLE)in debug mode \n$(END)"
-	@$(CC) $(FLAGS) $(DEBUG) $(OBJS) -o $(NAME) 
-	@printf "$(YELLOW)$(NAME) compiled!\n$(END)"
 
 pog:
 	@printf "\n$(RED)"

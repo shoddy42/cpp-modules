@@ -15,7 +15,7 @@
 # ----------------------------------------- #
 
 NAME 	:= PmergeMe
-FLAGS 	:= -Wall -Wextra -Werror -std=c++98
+FLAGS 	:= -Wall -Wextra -Werror -std=c++17
 DEBUG 	:= -g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++
@@ -70,7 +70,7 @@ VIOLET	:= \1\33[38;5;183m\2
 
 $(NAME): $(HEADERS) $(OBJS) $(MAKEFILE)
 	@printf "$(BLUE)Compiling $(YELLOW)$(NAME)\n$(END)"
-	@$(CC) $(FLAGS) $(OBJS) -o $(NAME) 
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME) 
 	@printf "$(YELLOW)$(NAME) compiled!\n$(END)"
 
 all: $(NAME)

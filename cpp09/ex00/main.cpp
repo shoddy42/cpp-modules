@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <map>
-#include <fstream>
-
-
 
 int	main(int ac, char **av)
 {

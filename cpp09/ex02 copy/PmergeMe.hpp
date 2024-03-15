@@ -25,7 +25,7 @@
 # include <ctime>
 # include <cstdlib>
 
-// # include <unistd.h> //remove 
+# include <unistd.h> //remove 
 //todo: choose between deque and list, deque probably easier
 
 class PmergeMe
@@ -36,8 +36,7 @@ class PmergeMe
 		~PmergeMe(void);
 		PmergeMe &operator=(PmergeMe const &src);
 		uint64_t get_time_ms(void);
-
-		void run(int ac, char **av);
+		
 		// void	do_math(char operation);
 		
 	private:
