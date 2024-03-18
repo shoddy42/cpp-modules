@@ -17,32 +17,27 @@
 # include <iostream>
 # include <fstream>
 # include <string>
-# include <vector>
-# include <deque> 
-// # include <algorithm>
-// # include <list>
+# include <algorithm>
 # include <chrono>
 # include <ctime>
 # include <cstdlib>
 
-// # include <unistd.h> //remove 
-//todo: choose between deque and list, deque probably easier
+# include <vector>
+# include <deque> 
+# define INSERTION_SORT_THRESHOLD 2
 
 class PmergeMe
 {
 	public:
 		PmergeMe(void);
-		PmergeMe(const PmergeMe &src);
 		~PmergeMe(void);
-		PmergeMe &operator=(PmergeMe const &src);
-		uint64_t get_time_ms(void);
-
-		void run(int ac, char **av);
-		// void	do_math(char operation);
+		void bench(size_t elements, char **av);
 		
 	private:
+		PmergeMe &operator=(PmergeMe const &src);
+		uint64_t get_time_in_microseconds(void);
+		PmergeMe(const PmergeMe &src);
 
 };
 
-
-#endif /* ********************************************* MUTATED_STACK_HPP */
+#endif

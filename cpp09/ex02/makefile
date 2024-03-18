@@ -15,7 +15,7 @@
 # ----------------------------------------- #
 
 NAME 	:= PmergeMe
-FLAGS 	:= -Wall -Wextra -Werror -std=c++17
+FLAGS 	:= #-Wall -Wextra -Werror -std=c++17
 DEBUG 	:= -g -fsanitize=address
 MAKEFILE:= makefile
 CC		:= c++
