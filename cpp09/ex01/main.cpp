@@ -18,9 +18,9 @@ int	main(int ac, char **av)
 {
 	RPN math;
 	(void)av;
-	if (ac < 2)
+	if (ac != 2)
 	{
-		std::cerr << "usage: ./RPN (inverted Polish mathematical expression)" << std::endl;
+		std::cerr << "usage: ./RPN \"(inverted Polish mathematical expression)\"" << std::endl;
 		return (1);
 	}
 	// math.validate_input(std::string(av[1]));
