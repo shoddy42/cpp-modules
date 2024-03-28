@@ -14,10 +14,8 @@
 #ifndef RPN_HPP
 # define RPN_HPP
 # include <iostream>
-// # include <fstream>
 # include <string>
 # include <stack>
-// # include <cstdlib>
 
 # define RED	"\1\33[38;5;196m\2"	
 # define RESET	"\1\33[0m\2"
@@ -26,21 +24,21 @@ class RPN
 {
 	public:
 		RPN(void);
-		RPN(const RPN &src);
 		~RPN(void);
 		RPN &operator=(RPN const &src);
 		void	calculate(std::string input);
 		
 	private:
+		RPN(const RPN &src);
 		bool	validate_input(std::string input);
 		void	do_math(char operation);
 		void	beautiful_error(std::string error_msg);
-		std::string _input;
-		std::stack<int> stack;
-		int _result;
-		size_t _i;
-		bool _valid;
-		// std::map<std::string, float> database;
+
+		std::stack<long long>	_stack;
+		std::string				_input;
+		long long				_result;
+		size_t 					_i;
+		bool 					_valid;
 };
 
 #endif

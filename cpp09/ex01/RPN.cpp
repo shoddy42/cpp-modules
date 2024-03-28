@@ -78,7 +78,7 @@ bool RPN::validate_input(std::string input)
 
 	while (input[skip_initial_spaces] == ' ')
 		skip_initial_spaces++;
-	if (!std::isdigit(input[skip_initial_spaces]))
+	if (!std::isdigit(input[skip_initial_spaces]) && !(input[skip_initial_spaces] == '-' && skip_initial_spaces + 1 < input.length() && std::isdigit(input[skip_initial_spaces + 1])))
 	{
 		std::cerr << RED << "Error: " << RESET << "Must start on a number!" << std::endl;
 		return (false);
@@ -90,9 +90,9 @@ bool RPN::validate_input(std::string input)
 			has_space = true;
 			continue;
 		}
-		if (has_space == false)
+		if (has_space == false && !(_i - 1 > 0 && input[_i - 1] == '-' && std::isdigit(input[_i]) != 0))
 		{
-			beautiful_error("Ensure a space between every character.");
+			beautiful_error("Ensure a space between every character. (except negative numbers)");
 			return (false);
 		}
 		if (input[_i] != '/' && input[_i] != '-' && input[_i] != '+' && input[_i] != '*')
@@ -111,26 +111,34 @@ bool RPN::validate_input(std::string input)
 
 void RPN::do_math(char operation)
 {
-	if (stack.size() < 2)
+	if (_stack.size() < 2)
 	{
 		beautiful_error("Stack too small at this operator.");
 		_valid = false;
 	}
 
-	int number = stack.top();
-	if (stack.size() > 1)
-		stack.pop();
+	int number = _stack.top();
+	if (_stack.size() > 1)
+		_stack.pop();
 	
-	// std::cout << "doing math operation: " << stack.top() << " " << operation << " " << number << " = ";
+	// std::cout << "doing math operation: " << _stack.top() << " " << operation << " " << number << " = ";
 	if (operation == '+')
-		stack.top() += number;
+		_stack.top() += number;
 	else if (operation == '-')
-		stack.top() -= number;
+		_stack.top() -= number;
 	else if (operation == '/')
-		stack.top() /= number;
+	{
+		if (number == 0)
+		{
+			beautiful_error("Dividing by zero!");
+			_valid = false;
+		}
+		else
+			_stack.top() /= number;
+	}
 	else if (operation == '*')
-		stack.top() *= number;
-	// std::cout << stack.top() << std::endl;
+		_stack.top() *= number;
+	// std::cout << _stack.top() << std::endl;
 }
 
 void RPN::calculate(std::string input)
@@ -144,19 +152,24 @@ void RPN::calculate(std::string input)
 	{
 		if (input[_i] == ' ')
 			continue;
+		if (input[_i] == '-' && _i + 1 < input.size() && std::isdigit(input[_i + 1]))
+		{
+			_stack.push((input[_i + 1] - '0') * -1);
+			_i++;
+		}	
 		else if (std::isdigit(input[_i]))
-			stack.push(input[_i] - '0');
+			_stack.push(input[_i] - '0');
 		else
 			do_math(input[_i]);
 	}
-	if (stack.size() > 1)
+	if (_stack.size() > 1 && _valid)
 	{
-		std::cerr << RED << "Error: " << RESET << stack.size() - 1 << " Numbers without operators!" << std::endl;
+		std::cerr << RED << "Error: " << RESET << _stack.size() - 1 << " Numbers without operators!" << std::endl;
 		return;
 	}
 	if (_valid == false)
 		return;
-	_result = stack.top();
+	_result = _stack.top();
 	std::cout << _result << std::endl;
 }
 
