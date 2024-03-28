@@ -18,6 +18,7 @@
 # include <fstream>
 # include <string>
 # include <cstdlib>
+# define VALUE_MAX 1000
 
 class BitcoinExchange
 {

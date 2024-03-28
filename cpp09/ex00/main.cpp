@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	(void)av;
 	if (ac != 2)
 	{
-		std::cerr << "usage: ./btc <data.csv>" << std::endl;
+		std::cerr << "usage: ./btc <file>" << std::endl;
 		return (1);
 	}
 	btc.fill_database();

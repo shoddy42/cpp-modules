@@ -11,10 +11,8 @@
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-#include <map>
-#include <fstream>
-
-
+// #include <map>
+// #include <fstream>
 
 int	main(int ac, char **av)
 {
@@ -25,5 +23,6 @@ int	main(int ac, char **av)
 		std::cerr << "usage: ./RPN (inverted Polish mathematical expression)" << std::endl;
 		return (1);
 	}
+	// math.validate_input(std::string(av[1]));
 	math.calculate(std::string(av[1]));
 }

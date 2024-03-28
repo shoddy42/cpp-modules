@@ -17,7 +17,6 @@
 */
 
 //todo: check leaks. check if data.csv is fully correct. write more input.txts
-//todo: actually make the copy constructor copy?
 
 BitcoinExchange::BitcoinExchange(void)
 {
@@ -125,11 +124,6 @@ bool	BitcoinExchange::validate_input(std::string date)
 
 void	BitcoinExchange::exchange(std::string filename)
 {
-	if (filename.length() < 5 || filename.substr(filename.length() - 4) != ".csv")
-	{
-		std::cerr << "Error: not a .csv file! [" << filename << "]" << std::endl;
-		exit(1);
-	}
 	std::ifstream file(filename.c_str());
 	if (file.fail())
 	{
@@ -158,7 +152,7 @@ void	BitcoinExchange::exchange(std::string filename)
 		float value = std::atof(str_value.c_str());
 		if (value <= 0)
 			std::cerr << "Error: not a positive number. [" << line << "]" << std::endl;
-		else if (value > 1000)
+		else if (value > VALUE_MAX)
 			std::cerr << "Error: too large a number. [" << line << "]" << std::endl;
 		else
 			std::cout << date << " => " << value << " = " << i->second * value << std::endl;

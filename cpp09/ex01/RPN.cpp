@@ -6,7 +6,7 @@
 /*   By: wkonings <wkonings@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/07/19 12:24:25 by wkonings      #+#    #+#                 */
-/*   Updated: 2023/07/19 16:38:17 by wkonings      ########   odam.nl         */
+/*   Updated: 2023/07/19 13:19:56 by wkonings      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,52 +50,77 @@ RPN &RPN::operator=(RPN const &src)
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void RPN::validate_input(std::string input)
+/**
+ * @brief Outputs a more helpful and coloured error message.
+ * 	Displays a red arrow where the error occured.
+ * 
+ * @param error_msg 
+ */
+void	RPN::beautiful_error(std::string error_msg)
 {
-	bool valid = true;
-	bool last_was_number = false;
+	std::cerr << RED << "Error: " << RESET << error_msg << std::endl;
+	std::cerr << _input.substr(0, _i) << RED << _input[_i] << RESET << _input.substr(_i + 1, _input.length()) << std::endl;
+	for (size_t pad = 0; pad < _i; pad++)
+		std::cout << " ";
+	std::cerr << RED << "^" << RESET << std::endl;
+}
 
-	int skip_initial_spaces = 0;
+/**
+ * @brief Detects invalid characters, and guarantees spaces.
+ * 
+ * @return @b false if any mistake is found.
+ * @return @b true in any other case.
+ */
+bool RPN::validate_input(std::string input)
+{
+	bool	has_space = true;
+	size_t	skip_initial_spaces = 0;
+
 	while (input[skip_initial_spaces] == ' ')
 		skip_initial_spaces++;
 	if (!std::isdigit(input[skip_initial_spaces]))
 	{
-		std::cerr << RED << "Error: " << RESET << "Invalid notation" << std::endl;
-		valid = false;
+		std::cerr << RED << "Error: " << RESET << "Must start on a number!" << std::endl;
+		return (false);
 	}
-	for (size_t i = skip_initial_spaces + 1; i < input.length() && valid == true; i++)
+	for (_i = skip_initial_spaces + 1; _i < input.length(); _i++)
 	{
-		if (input[i] == ' ')
+		if (input[_i] == ' ')
+		{
+			has_space = true;
 			continue;
-		if (i == input.length() - 1 && (input[i] != '/' && input[i] != '-' && input[i] != '+' && input[i] != '*' && input[i] != ' '))
-		{
-			valid = false;
 		}
-		if (std::isdigit(input[i]) && last_was_number == false && valid == true)
-			last_was_number = true;
-		else if ((input[i] == '/' || input[i] == '-' || input[i] == '+' || input[i] == '*') && last_was_number == true && valid == true)
-			last_was_number = false;
-		else
+		if (has_space == false)
 		{
-			std::cerr << RED << "Error: " << RESET << "Invalid notation." << std::endl;
-			std::cerr << input.substr(0, i) << RED << input[i] << RESET << input.substr(i + 1, input.length()) << std::endl;
-			for (size_t pad = 0; pad < i; pad++)
-				std::cout << " ";
-			
-			std::cerr << RED << "^" << RESET << std::endl;
-			if (std::isdigit(input[i]))
-				std::cerr << "Notation cannot end on a number. It must end on an instruction!" << std::endl;
-			valid = false;
+			beautiful_error("Ensure a space between every character.");
+			return (false);
 		}
+		if (input[_i] != '/' && input[_i] != '-' && input[_i] != '+' && input[_i] != '*')
+		{
+			if (!std::isdigit(input[_i]))
+			{
+				beautiful_error("Invalid character.");
+				return (false);
+			}
+		}
+		has_space = false;
 	}
-	if (!valid)
-		exit(1);
+	_valid = true;
+	return (true);
 }
 
 void RPN::do_math(char operation)
 {
+	if (stack.size() < 2)
+	{
+		beautiful_error("Stack too small at this operator.");
+		_valid = false;
+	}
+
 	int number = stack.top();
-	stack.pop();
+	if (stack.size() > 1)
+		stack.pop();
+	
 	// std::cout << "doing math operation: " << stack.top() << " " << operation << " " << number << " = ";
 	if (operation == '+')
 		stack.top() += number;
@@ -105,28 +130,39 @@ void RPN::do_math(char operation)
 		stack.top() /= number;
 	else if (operation == '*')
 		stack.top() *= number;
-
 	// std::cout << stack.top() << std::endl;
-	result = stack.top();
 }
 
 void RPN::calculate(std::string input)
 {
-	validate_input(input);
-
+	_input = input;
+	if (!validate_input(input))
+		return;
 	if (input.length() == 1)
-		result = input[0] - '0';
-	for (size_t i = 0; i < input.length(); i++)
+		_result = input[0] - '0';
+	for (_i = 0; _i < input.length() && _valid; _i++)
 	{
-		if (input[i] == ' ')
+		if (input[_i] == ' ')
 			continue;
-		else if (std::isdigit(input[i]))
-			stack.push(input[i] - '0');
-		else if (input[i] == '*' || input[i] == '+' || input[i] == '-' || input[i] == '/')
-			do_math(input[i]);
+		else if (std::isdigit(input[_i]))
+			stack.push(input[_i] - '0');
+		else
+			do_math(input[_i]);
 	}
-	std::cout << result << std::endl;
+	if (stack.size() > 1)
+	{
+		std::cerr << RED << "Error: " << RESET << stack.size() - 1 << " Numbers without operators!" << std::endl;
+		return;
+	}
+	if (_valid == false)
+		return;
+	_result = stack.top();
+	std::cout << _result << std::endl;
 }
 
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
 
 /* ************************************************************************** */
